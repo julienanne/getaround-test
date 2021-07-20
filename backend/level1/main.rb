@@ -5,9 +5,13 @@ ACTUAL_DIR = File.expand_path(File.dirname(__FILE__))
 def execute(input_path = nil)
   input_json = get_json_from_file(input_path)
 
-  rentals = get_id_for_rentals(input_json)
+  rentals = get_rentals(input_json)
 
-  write_output_json_file(rentals)
+  rentals_only_ids = rentals.map do |rental|
+    rental.select { |attribute, value| attribute == "id" }
+  end
+
+  write_output_json_file(rentals_only_ids)
 end
 
 def get_json_from_file(input_path)
@@ -15,9 +19,12 @@ def get_json_from_file(input_path)
   return JSON.parse(File.read(input_file_path))
 end
 
-def get_id_for_rentals(input_json)
-  return input_json["rentals"].map do |rental|
-    rental.select { |attribute, value| attribute == "id" }
+def get_rentals(input_json)
+  rentals = []
+  cars = input_json["cars"]
+  input_json["rentals"].each do |rental|
+    car = cars.select { |car| car["id"] == rental["car_id"] }
+    rentals << Rental.new(rental["id"], car, rental["start_date"], rental["end_date"], rental["distance"])
   end
 end
 
