@@ -9,6 +9,6 @@ while true; do
   echo ""
   echo ""
   echo $(date)
-  ruby tests.rb
+  bundle exec rspec
   inotifywait -qq -e close_write $files
 done
