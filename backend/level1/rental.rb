@@ -18,6 +18,10 @@ class Rental
   def get_price
     # The start and end day is included so + 1
     rent_day = (self.end_date - self.start_date) + 1
-    (rent_day * self.car[:price_per_day] + self.distance * self.car[:price_per_km]).to_i
+    (rent_day * self.car["price_per_day"] + self.distance * self.car["price_per_km"]).to_i
+  end
+
+  def to_output_json
+    return { "id": self.id, "price": self.get_price }
   end
 end
