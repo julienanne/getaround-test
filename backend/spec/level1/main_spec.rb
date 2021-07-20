@@ -2,10 +2,11 @@ require_relative '../../level1/main'
 
 RSpec.describe "Main" do
   describe "can execute" do
-    context "with Hello" do
-      it "return Hello on stdout" do
-        sentence_regex = /^Hello\n$/
-        expect { execute(["Hello"]) }.to output(sentence_regex).to_stdout
+    context "for level1" do
+      it "create a File named data/output.json" do
+        execute
+
+        expect(File).to exist("./level1/data/output.json")
       end
     end
   end
