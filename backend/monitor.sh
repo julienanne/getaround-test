@@ -10,6 +10,7 @@ while true; do
   echo ""
   echo $(date)
   # bundle exec rspec # for all test but level incompatible
-  bundle exec rspec --pattern spec/level2/*_spec.rb # for level2 tests
+  # bundle exec rspec --pattern spec/level2/*_spec.rb # for level2 tests
+  bundle exec rspec --pattern spec/level3/*_spec.rb # for level3 tests
   inotifywait -qq -e close_write $files
 done
