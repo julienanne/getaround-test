@@ -12,3 +12,9 @@ frontend/node_modules
 frontend/dist
 frontend/.cache
 .DS_Store
+._.DS_Store
+backendv2/level1/data/output.json
+backendv2/level2/data/output.json
+backendv2/level3/data/output.json
+backendv2/level4/data/output.json
+backendv2/level5/data/output.json
