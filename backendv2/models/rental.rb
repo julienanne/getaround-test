@@ -13,6 +13,15 @@ class Rental
     return (get_price_for_days + get_price_for_km).to_i
   end
 
+  def number_of_days
+    # The start and end day is included so + 1
+    @end_date - @start_date + 1
+  end
+
+  def car_price_per_day
+    @car["price_per_day"]
+  end
+
   private
 
   def get_price_for_km
@@ -21,10 +30,5 @@ class Rental
 
   def get_price_for_days
     number_of_days * @car["price_per_day"]
-  end
-
-  def number_of_days
-    # The start and end day is included so + 1
-    @end_date - @start_date + 1
   end
 end
