@@ -1,12 +1,13 @@
 class Rental
-  attr_reader :id
+  attr_reader :id, :options
 
-  def initialize(id:, car:, start_date:, end_date:, distance:)
+  def initialize(id:, car:, start_date:, end_date:, distance:, options: [])
     @id = id
     @car = car
     @start_date = start_date
     @end_date = end_date
     @distance = distance
+    @options = options
   end
 
   def get_price

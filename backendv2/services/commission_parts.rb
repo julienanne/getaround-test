@@ -13,9 +13,9 @@ class CommissionParts < Service
     drivy_fee = (base_commission - insurance_fee - assistance_fee).to_i # the rest
 
     return {
-          "insurance_fee": insurance_fee,
-          "assistance_fee": assistance_fee,
-          "drivy_fee": drivy_fee
+          insurance_fee: insurance_fee,
+          assistance_fee: assistance_fee,
+          drivy_fee: drivy_fee
         }
   end
 

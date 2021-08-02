@@ -9,6 +9,8 @@ class JsonFormatter < Service
 
   def call
     return JSON.generate(@hash_content,
-    { indent: "  ", space: " ", array_nl: "\n", object_nl: "\n" })
+    { indent: "  ", space: " ", array_nl: "\n", object_nl: "\n" }).gsub('[
+
+      ]', "[]") # Monkey patch for the empty array
   end
 end
